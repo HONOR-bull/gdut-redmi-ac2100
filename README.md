@@ -53,6 +53,52 @@
 <br />
 
 
-## 步骤三:编译openwrt系统
+## 步骤三:编译openwrt系统的铺垫
 有了breed这个基础，我们就可以建房子了，就是编译属于自己的固件，偷懒的话其实也可以不编译(乐)
-1.打开Microsoft Store（windows自带应用商店），搜索Ubuntu，选择Ubuntu20.04.4
+
+1.打开Microsoft Store（windows自带应用商店），搜索Ubuntu，选择Ubuntu20.04.4 LTS进行安装。
+
+2.屏幕左下角windows图标右键，选择Windows powershell（管理员），输入`wsl --install`，然后回车      相关代码以及解释来源于使用 [WSL 在 Windows 上安装 Linux](https://docs.microsoft.com/zh-cn/windows/wsl/install)
+
+3.打开安装好的ubuntu，会提示Installing, this may take a few minutes...     如果有问题移步疑难解答
+过大概几秒钟，会要求你输入一个用户名和密码，尽量简单容易记住就可以，用户名和密码是本地账户，没什么安全隐患。密码要输入两次确保正确，输入密码时不可见，请尽量短且容易记（如1111），创建好后不要关闭。
+
+4.此时还不需要打开科学上网，除非你上GitHub打开了，此时请关闭。之后参考[Lean 的 Openwrt 源码仓库](https://github.com/coolsnowwolf/lede)中的代码，以下说一些注意事项
+
+[点击，从这一步开始](https://github.com/coolsnowwolf/lede#%E7%BC%96%E8%AF%91%E5%91%BD%E4%BB%A4)
+
+这一步中的安装依赖，有一个代码框，其中包含三条代码，请分开，每次一条执行，每个sudo apt开头的为一条，就是两条很短的+一条很长的。如何使用呢，复制第一条，然后在WSL中（刚刚装的Ubuntu，此时没有关闭，关闭了请再开），右键即可粘贴代码，回车运行，此时会要求你输入设好的密码，输入密码后回车，他会自动执行安装命令。执行完后继续第二第三条命令。
+
+>下载源代码，更新 feeds 并选择配置
+这里下面的代码也是逐一执行，分开来容易知道错误在哪里。
+
+在执行`make menuconfig`命令前，请再次执行更新feeeds的代码，确保提示already up to date，确保下载完全。
+
+5.粘贴`make menuconfig`，等会，界面会发生改变，可以用上下键进行移动，回车键进行选择，左右键切换select和exit进行选择和离开，
+
+6.选架构，选LucI，applications，privoxy
+
+7.选好后save，改名，exit，关闭
+
+8.everything，寻找刚刚改名的config文件，复制到桌面上。
+
+## 步骤四：进行openwrt的云编译
+来源：[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
+
+文件名填写为.config，把生成的.config 文件的内容复制粘贴到下面的文本框中，刚刚的config
+
+在 Actions 页面选择Build OpenWrt，然后点击Run Workflow按钮，即可开始编译。SSH connection to Actions的值要为false。
+
+一两个小时后完成，取回本地
+
+
+## 步骤五：刷入openwrt
+
+先刷底包，然后进后台，升级，新包
+
+进新的固件，修改密码admin
+
+winscp  ssh 22端口 账号密码  之后返回上一级 /tmp 把drcom的ipk拖入，然后点击上方命令行
+opkg install 2100.ipk
+configure即为成功，重启路由器
+进行drcom和privoxy的代理
