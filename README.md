@@ -10,7 +10,7 @@
 
 ## 准备所需物品：1.红米ac2100及其自带电源  2.带有网口的电脑（轻薄本请购买usb转网口转接线）  3.网线2条，务必两条   4.牙签或者取卡器或者回形针    5.*（此项非必须，但是十分建议）*  科学上网的工具   6.下载软件[WinSCP](./software/WinSCP-5.13.7-Setup.exe)
 
-## 本教程非原创，在以下开发者的基础上进行改进:https://github.com/shengqiangzhang/Drcom-GDUT-HC5661A-OpenWrt    本文可能存在不普适的情况，因其尽量使用简单快捷的方法
+## 本教程非原创，在以下开发者的基础上进行改进:[在Dr.COM下使用路由器上校园网WIFI(以广东工业大学、极路由1S HC5661A、OpenWrt为例)](https://github.com/shengqiangzhang/Drcom-GDUT-HC5661A-OpenWrt)    本文可能存在不普适的情况，因其尽量使用简单快捷的方法
 
 ## 步骤一:对路由器刷入breed
 
@@ -32,15 +32,15 @@
 3注：简而言之，保证路由器与电脑有网。
 
 4.本步骤存在图片，请跳转上方文章仔细阅读。      *本步骤取消坏块检查*    桌面新建一个记事本（txt），根据恩山文章所说，替换以下链接中CCCCC部分，CCCCC为自己路由器的stok字符串
->http://192.168.31.1/cgi-bin/luci/;stok=CCCCCCCCCCC/api/misystem/set_config_iotdev?bssid=Xiaomi&user_id=longdike&ssid=%0Acd%20%2Ftmp%0Acurl%20-o%20B%20-O%20https%3A%2F%2Fbreed.hackpascal.net%2Fr1286%2520%255b2020-10-09%255d%2Fbreed-mt7621-xiaomi-r3g.bin%20-k%20-g%0A%5B%20-z%20%22%24(sha256sum%20B%20%7C%20grep%20242d42eb5f5aaa67ddc9c1baf1acdf58d289e3f792adfdd77b589b9dc71eff85)%22%20%5D%20%7C%7C%20mtd%20-r%20write%20B%20Bootloader%0A
+`http://192.168.31.1/cgi-bin/luci/;stok=CCCCCCCCCCC/api/misystem/set_config_iotdev?bssid=Xiaomi&user_id=longdike&ssid=%0Acd%20%2Ftmp%0Acurl%20-o%20B%20-O%20https%3A%2F%2Fbreed.hackpascal.net%2Fr1286%2520%255b2020-10-09%255d%2Fbreed-mt7621-xiaomi-r3g.bin%20-k%20-g%0A%5B%20-z%20%22%24(sha256sum%20B%20%7C%20grep%20242d42eb5f5aaa67ddc9c1baf1acdf58d289e3f792adfdd77b589b9dc71eff85)%22%20%5D%20%7C%7C%20mtd%20-r%20write%20B%20Bootloader%0A
 此代码就是用来刷BREED的，将替换好的这一大串链接从记事本复制到路由器地址栏，按回车，稍等一会，会出现:  {"code":0} 
 
-5.>如果路由器在60秒内重启则代表刷BREED成功(灯会从蓝变橘，最终变蓝进入系统)。
+5.
+>如果路由器在60秒内重启则代表刷BREED成功(灯会从蓝变橘，最终变蓝进入系统)。
 
 <br />
 
 ## 步骤二:进入breed
 >成功后拔掉电源，按住reset同时接上电源等10秒即可进入breed。192.168.1.1
-   如果没重启，可能是stok过期了。进入后台复制新的stok即可。也有可能下载的BREED损坏，从新运行代码。也有可能没网络。
-
-刷完后可能无法进入原厂系统，进BREED删变量：normal_firmware_md5
+>如果没重启，可能是stok过期了。进入后台复制新的stok即可。也有可能下载的BREED损坏，从新运行代码。也有可能没网络。
+>如果刷完后可能无法进入原厂系统，进BREED删变量：normal_firmware_md5
