@@ -144,20 +144,20 @@ cd lede
 1.进入[P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt) 项目页面，点击页面中的Use this template（使用这个模版）按钮。
 
 2.>填写仓库名称，然后点击Create repository from template（从模版创建储存库）按钮。
-！[pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/553.png)
+![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/553.png)
 
 3.>经过几秒钟的等待，页面会跳转到新建的仓库。然后点击Add file-----再点create new file按钮。
-！[pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/551.png)
+![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/551.png)
 
 4.>文件名填写为.config，把生成的.config 文件的内容复制粘贴到下面的文本框中
 就是步骤三中获得的config文件，记事本打开该文件，全选复制粘贴到文本框中
-！[pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/456.png)
+![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/456.png)
 
 5.>翻到页面最下方，点击Commit new file（提交新文件）按钮。
-！[pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/405.png)
+![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/405.png)
 
 6.在 Actions 页面选择Build OpenWrt，SSH connection to Actions的值要为false，然后点击Run Workflow按钮，即可开始编译。
-！[pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/586.png)
+![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/586.png)
 
 7.等待一两个小时后完成，同样在action这里取回压缩包到本地
 
@@ -175,8 +175,8 @@ cd lede
 5.此时进入后台管理界面，账号是root，密码是password（本教程是该账号密码，**其他固件**或有改变，请留意）
 
 6.登录进去后上方选择system（系统）----backup/flash firmware（备份/升级固件），选择固件（步骤四或其他），keep setting（保留配置）不要勾选，点击flash image（刷写固件）。再点，Proceed
-！[pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/flash%20image.png)
-！[pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/verify.png)
+![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/flash%20image.png)
+![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/verify.png)
 
 7.转圈圈等待1-2分钟左右关闭网页，重新进入192.168.1.1，此时语言已经为中文，此时的固件就是自己编辑的固件/别人的固件了     疑难解答
 
