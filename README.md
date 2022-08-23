@@ -87,7 +87,7 @@
 3.打开安装好的ubuntu，会提示Installing, this may take a few minutes...     如果有问题移步疑难解答
 过大概几秒钟，会要求你输入一个用户名和密码，尽量简单容易记住就可以，用户名和密码是本地账户，没什么安全隐患。密码要输入两次确保正确，输入密码时不可见，请尽量短且容易记（如1111），创建好后不要关闭。
 
-4.此时还不需要打开科学上网，除非你上GitHub打开了，此时请关闭。之后参考[Lean 的 Openwrt 源码仓库](https://github.com/coolsnowwolf/lede)中的代码，以下说一些注意事项
+4.此时还不需要打开科学上网，除非你上GitHub打开了，此时请关闭。之后参考[Lean的Openwrt 源码仓库](https://github.com/coolsnowwolf/lede)中的代码，以下说一些注意事项
 
 [点击，从这一步开始](https://github.com/coolsnowwolf/lede#%E7%BC%96%E8%AF%91%E5%91%BD%E4%BB%A4)
 
@@ -101,10 +101,14 @@
 5.粘贴`make menuconfig`，等会，界面会发生改变，可以用上下键进行移动，回车键进行选择，左右键切换select和exit进行选择和离开，
 
 6.选架构如图所示的mediatek MIPS  CPU型号MT7921，下滑，选LucI----applications----下滑寻找luci-app-privoxy，按两次空格，使左边为*号，结束，右方向键exit回到原始界面
+![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/%E6%9E%B6%E6%9E%84.png)
 
-7.然后右方向键选save，改名为（如ac.config），save。改好名字后选exit，wsl窗口哦可以关闭
+![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/privoxy.png)
 
-8.寻找刚刚改名的config文件，复制到桌面上。
+![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/save.png)
+7.然后右方向键选save，改名为（如ac.config），save。改好名字后选exit，wsl窗口可以关闭
+
+8.寻找刚刚改名的config文件，复制到桌面上。win10 21H2，config的本地路径在`\\wsl$\Ubuntu-20.04\home\用户名\lede`中
 
 ## 步骤四：进行openwrt的云编译
 来源：[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
