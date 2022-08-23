@@ -138,22 +138,27 @@ cd lede
 来源：[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
 >准备工作
->GitHub 账号
+>注册GitHub 账号
+
 >搭建编译环境，生成.config文件。(步骤三已完成)
 
 1.进入[P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt) 项目页面，点击页面中的Use this template（使用这个模版）按钮。
 
-2.>填写仓库名称，然后点击Create repository from template（从模版创建储存库）按钮。
+2.
+>填写仓库名称，然后点击Create repository from template（从模版创建储存库）按钮。
 ![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/553.png)
 
-3.>经过几秒钟的等待，页面会跳转到新建的仓库。然后点击Add file-----再点create new file按钮。
+3.
+>经过几秒钟的等待，页面会跳转到新建的仓库。然后点击Add file-----再点create new file按钮。
 ![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/551.png)
 
-4.>文件名填写为.config，把生成的.config 文件的内容复制粘贴到下面的文本框中
+4.
+>文件名填写为.config，把生成的.config 文件的内容复制粘贴到下面的文本框中
 就是步骤三中获得的config文件，记事本打开该文件，全选复制粘贴到文本框中
 ![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/456.png)
 
-5.>翻到页面最下方，点击Commit new file（提交新文件）按钮。
+5.
+>翻到页面最下方，点击Commit new file（提交新文件）按钮。
 ![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/405.png)
 
 6.在 Actions 页面选择Build OpenWrt，SSH connection to Actions的值要为false，然后点击Run Workflow按钮，即可开始编译。
