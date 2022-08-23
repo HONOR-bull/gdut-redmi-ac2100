@@ -1,6 +1,10 @@
 ## gdut-redmi-ac2100
 ### 阅读本资料前请先了解以下注意事项：
+
+
 #### 本资料暂未完成
+
+
 ##### 1.明确自己的目的，以及可以承受的代价（比如路由器购买的成本以及时间成本）
 ##### 2.刷机有风险，请提前做好资料备份。刷机可能会失去保修，请慎重考虑。
 ##### 3.本文只适用于红米AC2100,其他路由器请斟酌套用本资料，若出现变砖与本作者无关
@@ -8,32 +12,48 @@
 ##### 5.本文不保证时效性，可能随环境变迁或者设备差异发生失效。
 ##### 6.注意，如果基于本文阅读，存在跳转到其他文章的其中某一步骤，之后可能再次回到本文步骤，请知悉。
 
-### 准备所需物品：1.红米ac2100及其自带电源  2.带有网口的电脑（轻薄本请购买usb转网口转接线）  3.网线2条，务必两条   4.牙签或者取卡器或者回形针    5.*（此项非必须，但是十分建议）*  科学上网的工具   6.下载软件[WinSCP](./software/WinSCP-5.13.7-Setup.exe)
 
-## 本教程非原创，在以下开发者的基础上进行改进:[在Dr.COM下使用路由器上校园网WIFI(以广东工业大学、极路由1S HC5661A、OpenWrt为例)](https://github.com/shengqiangzhang/Drcom-GDUT-HC5661A-OpenWrt)    本文可能存在不普适的情况，因其尽量使用简单快捷的方法
+#### 准备所需物品：1.红米ac2100及其自带电源  2.带有网口的电脑（轻薄本请购买usb转网口转接线）  3.网线2条，*务必两条*   4.牙签或者取卡器或者回形针    5.*（此项非必须，但是十分建议）*  科学上网的工具   6.下载软件[WinSCP](./software/WinSCP-5.13.7-Setup.exe)    7.2022年，WSL在本地的路径与2020年的不一致，不需要everything这个搜索软件
+
+
+## 本教程非原创，在以下开发者的基础上进行改进:
+
+[在Dr.COM下使用路由器上校园网WIFI(以广东工业大学、极路由1S HC5661A、OpenWrt为例)](https://github.com/shengqiangzhang/Drcom-GDUT-HC5661A-OpenWrt)
+
+本文可能存在不普适各个路由器的情况，因本文尽量使用简单快捷的方法，且目标路由器为红米AC2100
+
+
+
+
 
 ## 步骤一:对路由器刷入breed
 
-<br />
-
 在此之前，先略微解释什么是breed，相信接触这个方面的朋友们可能接触过手机刷机，breed与手机刷机的recovery有些相似，都是在底层刷入系统的工具。如果没有接触过recovery的朋友也不必理会，只需要知道装breed的目的是为了下一步刷入固件（ROM）。
 
-方法一：在此文章链接的步骤二[在Dr.COM下使用路由器上校园网WIFI(以广东工业大学、极路由1S HC5661A、OpenWrt为例)](https://github.com/shengqiangzhang/Drcom-GDUT-HC5661A-OpenWrt)
-此方法较为原始，可以称之为正道
+方法一：在此文章链接的步骤二[在Dr.COM下使用路由器上校园网WIFI(以广东工业大学、极路由1S HC5661A、OpenWrt为例)](https://github.com/shengqiangzhang/Drcom-GDUT-HC5661A-OpenWrt#%E6%AD%A5%E9%AA%A4%E4%BA%8C%E5%88%B7%E5%85%A5%E4%B8%8D%E6%AD%BBbreed)
 
-方法二：此方法来自[恩山论坛文章红米【AC2100】一键刷BREED【30秒刷完】|无需Telnet](https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=4066963)，通过个人简化说明以及步骤，属于歪门邪道，但是同样可以刷入breed，如果介意请走正道。
+此方法较为原始，可以称之为大道
 
-1.无论拿到手的ac2100是什么版本的固件，我都建议你将其进行降级操作，可以在本方法的文章链接中自取文件（请注意选择红米rm ac2100，而非xiaomi ac2100，寄了别怪我没提醒），或者在我的仓库中下载
 
-2.下载完成后，电脑网线插入路由器的LAN口，然后打开浏览器进入后台，192.168.31.1->常用设置->系统状态->手动升级，加载刚刚下载的降级固件，可以保留数据->开始升级
+
+方法二：此方法来自[恩山论坛文章红米【AC2100】一键刷BREED【30秒刷完】|无需Telnet](https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=4066963)
+
+通过个人简化说明以及步骤，属于新道路，但是同样可以刷入breed，如果介意请走方法一。
+
+1.无论拿到手的ac2100是什么版本的固件，我都建议你将其进行降级操作，可以在[恩山文章链接](https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=4066963)中自取文件
+
+（请注意选择红米rm ac2100，而非xiaomi ac2100），或者在我的仓库中下载
+
+
+2.下载完成后，电脑网线插入路由器的LAN口，然后打开浏览器进入后台地址：192.168.31.1->右上角->系统升级->手动升级，加载刚刚下载的降级固件，可以保留数据->开始升级
 
 3.升级（降级）操作完成后会自动重启，再次进入后台192.168.31.1，此时需要用到第二条网线，第二条网线连接墙上网口与路由器WAN口，然后在路由器设置中进行拨号上网（请自己交网费和输入校园网账号密码），此时电脑网线仍然连接路由器LAN口，并且是能上网的状态。
 
-3注：简而言之，保证路由器与电脑有网。
+注：简而言之，保证路由器与电脑有网。
 
-4.本步骤存在图片，请跳转上方文章仔细阅读。      *本步骤取消坏块检查*    桌面新建一个记事本（txt），根据恩山文章所说，替换以下链接中CCCCC部分，CCCCC为自己路由器的stok字符串
+4.本步骤存在图片，请跳转上方文章仔细阅读。      *本步骤掠过坏块检查*    桌面新建一个记事本（txt），根据恩山文章所说，替换以下链接中CCCCC部分，CCCCC为自己路由器的stok字符串
 
-`http://192.168.31.1/cgi-bin/luci/;stok=CCCCCCCCCCC/api/misystem/set_config_iotdev?bssid=Xiaomi&user_id=longdike&ssid=%0Acd%20%2Ftmp%0Acurl%20-o%20B%20-O%20https%3A%2F%2Fbreed.hackpascal.net%2Fr1286%2520%255b2020-10-09%255d%2Fbreed-mt7621-xiaomi-r3g.bin%20-k%20-g%0A%5B%20-z%20%22%24(sha256sum%20B%20%7C%20grep%20242d42eb5f5aaa67ddc9c1baf1acdf58d289e3f792adfdd77b589b9dc71eff85)%22%20%5D%20%7C%7C%20mtd%20-r%20write%20B%20Bootloader%0A`
+```http://192.168.31.1/cgi-bin/luci/;stok=CCCCCCCCCCC/api/misystem/set_config_iotdev?bssid=Xiaomi&user_id=longdike&ssid=%0Acd%20%2Ftmp%0Acurl%20-o%20B%20-O%20https%3A%2F%2Fbreed.hackpascal.net%2Fr1286%2520%255b2020-10-09%255d%2Fbreed-mt7621-xiaomi-r3g.bin%20-k%20-g%0A%5B%20-z%20%22%24(sha256sum%20B%20%7C%20grep%20242d42eb5f5aaa67ddc9c1baf1acdf58d289e3f792adfdd77b589b9dc71eff85)%22%20%5D%20%7C%7C%20mtd%20-r%20write%20B%20Bootloader%0A```
 
 此代码就是用来刷BREED的，将替换好的这一大串链接从记事本复制到路由器地址栏，按回车，稍等一会，会出现:  {"code":0} 
 
@@ -41,14 +61,18 @@
 
 <br />
 
+
+
+
 ## 步骤二:进入breed
+
 成功后拔掉电源，拿事先准备好的牙签或者卡针，按住reset（电源插孔隔壁的小洞洞），之后接上电源等2秒，路由器灯会蓝橘色闪烁，停止闪烁后松开reset，即可进入breed，电脑浏览器地址栏输入192.168.1.1
 
 >如果没重启，可能是stok过期了。进入后台复制新的stok即可。也有可能下载的BREED损坏，从新运行代码。也有可能没网络。
 
 >如果刷完后可能无法进入原厂系统，进BREED删变量：normal_firmware_md5
 
-
+### 如果不想自行编译固件可以跳到步骤五：刷入固件，可以自行到恩山论坛获取固件，或者使用官方的英文原版固件。刷入固件后请跳转到步骤六：配置privoxy
 
 <br />
 
@@ -76,11 +100,11 @@
 
 5.粘贴`make menuconfig`，等会，界面会发生改变，可以用上下键进行移动，回车键进行选择，左右键切换select和exit进行选择和离开，
 
-6.选架构，选LucI，applications，privoxy
+6.选架构如图所示的mediatek MIPS  CPU型号MT7921，下滑，选LucI----applications----下滑寻找luci-app-privoxy，按两次空格，使左边为*号，结束，右方向键exit回到原始界面
 
-7.选好后save，改名，exit，关闭
+7.然后右方向键选save，改名为（如ac.config），save。改好名字后选exit，wsl窗口哦可以关闭
 
-8.everything，寻找刚刚改名的config文件，复制到桌面上。
+8.寻找刚刚改名的config文件，复制到桌面上。
 
 ## 步骤四：进行openwrt的云编译
 来源：[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
