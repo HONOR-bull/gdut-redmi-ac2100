@@ -86,9 +86,6 @@
 
 如果不想自行编译固件可以跳到[步骤五：刷入固件](https://github.com/HONOR-bull/gdut-redmi-ac2100#%E6%AD%A5%E9%AA%A4%E4%BA%94%E5%88%B7%E5%85%A5openwrt)
 
-***固件可以自行到恩山论坛获取，或者使用官方的英文原版固件。***
-
-刷入固件后请跳转到[步骤六：配置privoxy](https://github.com/HONOR-bull/gdut-redmi-ac2100/edit/main/README.md#%E6%AD%A5%E9%AA%A4%E5%85%AD%E8%BF%9B%E8%A1%8Cprivoxy%E7%9A%84%E4%BB%A3%E7%90%86)
 
 <br />
 
