@@ -169,7 +169,6 @@ sed -i '/encryption/a\set wireless.default_radio${devidx}.key=123456789' package
 
 ![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/privoxy.png)
 
-![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/save.png)
 7.然后右方向键选save。后选exit，Ubuntu窗口可以关闭
 
 8.刚刚的config文件本地路径在`\\wsl$\Ubuntu-20.04\home\用户名\lede`中（至少win10 21H1在这里）
