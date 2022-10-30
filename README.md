@@ -120,8 +120,12 @@ sudo sed -i "s@http://.*archive.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@
 sudo sed -i "s@http://.*security.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@g" /etc/apt/sources.list
 ```
 
-6.[Lean的Openwrt 源码仓库](https://github.com/coolsnowwolf/lede)中的代码，其中包含三条代码，分开使用，右键即可粘贴代码，回车运行，**以下命令请多执行一次**
+6.[Lean的Openwrt 源码仓库](https://github.com/coolsnowwolf/lede)中的代码，其中包含三条代码，分开使用，右键即可粘贴代码，回车运行，**第三条大块命令请多执行一次**
 ```
+sudo apt update -y
+
+sudo apt full-upgrade -y
+
 sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
 bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
 git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \
