@@ -2,9 +2,6 @@
 ### 阅读本资料前请先了解以下注意事项：
 
 
-#### 本资料暂未完成，大概是70%，还缺少图片以及目录
-
-
 ##### 1.明确自己的目的，以及可以承受的代价（比如路由器购买的成本以及时间成本）
 ##### 2.刷机有风险，请提前做好资料备份。刷机可能会失去保修，请慎重考虑。
 ##### 3.本文只适用于红米AC2100,其他路由器请斟酌套用本资料，若出现变砖与本作者无关
@@ -20,7 +17,7 @@
 4.牙签或者取卡器或者回形针   
 5.*（此项非必须，但是十分建议）*  科学上网的工具   
 6.下载软件[WinSCP](https://winscp.net/eng/download.php)    
-7.2022年，WSL（基于windows系统的linux子系统）在本地的路径与2020年的不一致，不需要everything这个搜索软件
+7.2022年，WSL2（基于windows系统的linux子系统）在本地的路径与2020年的不一致，不需要everything这个搜索软件
 
 
 ## 本教程非原创，在以下开发者的基础上进行改进:
@@ -35,7 +32,7 @@
 
 ## 步骤一:对路由器刷入breed
 
-在此之前，先略微解释什么是breed，相信接触这个方面的朋友们可能接触过手机刷机，breed与手机刷机的recovery有些相似，都是在底层刷入系统的工具。如果没有接触过recovery的朋友也不必理会，只需要知道装breed的目的是为了下一步刷入固件（ROM）。
+breed与手机刷机的recovery有些相似，都是在底层刷入系统的工具。如果没有接触过recovery的朋友也不必理会，只需要知道装breed的目的是为了下一步刷入固件（ROM）。
 
 ###### 方法一：在此文章链接的步骤二[老古董玩意儿](https://github.com/shengqiangzhang/Drcom-GDUT-HC5661A-OpenWrt#%E6%AD%A5%E9%AA%A4%E4%BA%8C%E5%88%B7%E5%85%A5%E4%B8%8D%E6%AD%BBbreed)
 
@@ -46,9 +43,9 @@
 
 方法二：此方法来自[恩山论坛文章一键刷BREED](https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=4066963)
 
-同样可以刷入breed，简单又快捷，太有空的请走方法一。
+同样可以刷入breed，简单又快捷，过于有空的请走方法一。
 
-1.无论拿到手的ac2100是什么版本的固件，都建议进行降级操作，可以在[恩山文章链接](https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=4066963)中自取文件
+1.首先进行降级操作，可以在[恩山文章链接](https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=4066963)中自取文件
 
 （请注意选择红米rm ac2100，而非xiaomi ac2100），或者在我的[仓库中下载](https://github.com/HONOR-bull/gdut-redmi-ac2100/tree/main/%E9%99%8D%E7%BA%A7)
 
@@ -59,7 +56,7 @@
 
 注：简而言之，保证路由器与电脑有网。
 
-4.*本步骤掠过恩山文章的坏块检查*    
+4.*掠过恩山文章的坏块检查*    
 
 桌面新建一个记事本（txt），复制浏览器地址栏的stok字符串，粘贴到记事本中。替换以下链接中CCCCC部分，CCCCC是刚刚复制的stok字符串
 
@@ -69,7 +66,7 @@
 
 代码是用来刷BREED的，*将替换好stok*的这一大串链接从记事本复制到路由器地址栏，按回车，稍等一会，会出现:  {"code":0} 
 
->如果路由器在60秒内重启则代表刷BREED成功(灯会从蓝变橘，最终变蓝进入系统)。   成功转下一步，不成功 请查阅疑难解答
+>如果路由器在60秒内重启则代表刷BREED成功(灯会从蓝变橘，最终变蓝进入系统)。 
 
 <br />
 
@@ -78,7 +75,7 @@
 
 ## 步骤二:进入breed
 
-成功后拔掉电源，拿事先准备好的牙签或者卡针，先按住reset（电源插孔隔壁的小洞洞），之后接上电源等2秒，路由器灯会红色闪烁，停止闪烁后松开reset，电脑与**路由器的LAN口**连接，电脑浏览器地址栏输入192.168.1.1/index.html，即可进入breed
+刷入breed成功后拔掉电源，电脑与**路由器的LAN口**连接，拿事先准备好的牙签或者卡针，先按住reset（电源插孔隔壁的小洞洞），之后接上电源等2秒，路由器灯会红色闪烁，停止闪烁后松开reset，电脑浏览器地址栏输入192.168.1.1/index.html，即可进入breed
 
 >如果没重启，可能是stok过期了。进入后台复制新的stok即可。也有可能下载的BREED损坏，重新运行代码。也有可能没网络。
 
@@ -93,15 +90,15 @@
 ## 步骤三:编译openwrt系统的铺垫
 有了breed，我们就可以建房子了，就是编译**属于自己的固件**，偷懒的话其实也可以不编译(乐)，空降[步骤五](https://github.com/HONOR-bull/gdut-redmi-ac2100#%E6%AD%A5%E9%AA%A4%E4%BA%94%E5%88%B7%E5%85%A5openwrt)
 
-1.打开windows自带应用商店，搜索Ubuntu，选择Ubuntu20.04.4 LTS进行安装。
+1.打开windows自带应用商店，搜索Ubuntu，选择Ubuntu20.04 LTS进行安装。
 
 2.屏幕左下角windows图标右键，或者**win+x**，选择Windows powershell（**管理员**），输入`wsl --install`，然后回车      
 相关代码以及解释来源于使用 [WSL 在 Windows 上安装 Linux](https://docs.microsoft.com/zh-cn/windows/wsl/install)
 
-3.打开应用商店安装的ubuntu，会提示Installing, this may take a few minutes...     如果有问题移步疑难解答
+3.打开应用商店安装的ubuntu，会提示Installing, this may take a few minutes...     
 过大概几秒钟，会要求你输入一个用户名和密码，尽量简单容易记住就可以。密码要输入两次确保正确，输入密码时**不可见**，请尽量短且容易记（如111），创建好后ubuntu窗口不要关闭。
 
-4.此时可以准备打开科学上网，要对linux进行代理，clash代理[详细方法](https://www.jianshu.com/p/af6a02f98d5a)
+4.此时打开科学上网，要对linux进行代理，clash代理[详细方法](https://www.jianshu.com/p/af6a02f98d5a)
 
 或者clash打开允许局域网连接，之后win+r调出运行,输入`\\wsl$`，点ubuntu文件夹，如果没文件请先打开ubuntu再刷新，进入home文件夹，再进刚刚设置的用户名找到一个`.bashrc`文件，文末添加
 
@@ -126,12 +123,6 @@ sudo apt update -y
 
 sudo apt full-upgrade -y
 
-sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
-bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
-git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \
-libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \
-mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip libpython3-dev qemu-utils \
-rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 ```
 
 >下载源代码，更新 feeds 并选择配置
@@ -152,13 +143,17 @@ git clone https://github.com/GJXS1980/ODP.git
 git clone https://github.com/CHN-beta/xmurp-ua.git package/xmurp-ua
 
 cd ..
+```
 
+以下命令为个性化固件部分
+```
 sed -i 's/OpenWrt/Windy/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 sed -i 's/wireless.default_radio${devidx}.encryption=none/wireless.default_radio${devidx}.encryption=psk-mixed/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 sed -i '/encryption/a\set wireless.default_radio${devidx}.key=123456789' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 ```
+
 请再次执行`./scripts/feeds update -a`和`./scripts/feeds install -a`，确保提示already up to date，确保完全。
 
 5.`make menuconfig`，界面会发生改变，可以用***上下键进行移动，回车键进行选择，空格进行勾选，左右键切换select和exit进行选择和离开***，
@@ -169,12 +164,14 @@ sed -i '/encryption/a\set wireless.default_radio${devidx}.key=123456789' package
 
 ![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/privoxy.png)
 
-7.然后右方向键选save。后选exit，Ubuntu窗口可以关闭
+7.另外，如果使用xmurp-ua插件，在kernel————other module中选择xmurp-ua，*号，主页base system中勾选zram-swap，*号。（privoxy和xmurp-ua二选一即可）
 
-8.刚刚的config文件本地路径在`\\wsl$\Ubuntu-20.04\home\用户名\lede`中（至少win10 21H1在这里）
+8.然后右方向键选save。后选exit
 
-## 步骤四：进行openwrt的云编译
-来源：[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
+9.刚刚的config文件本地路径在`\\wsl$\Ubuntu-20.04\home\用户名\lede`中（至少win10 21H1在这里）
+
+## 步骤四：进行编译
+云编译：来源：[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
 >准备工作
 >注册GitHub 账号
@@ -206,6 +203,15 @@ sed -i '/encryption/a\set wireless.default_radio${devidx}.key=123456789' package
 7.等待一两个小时后完成，同样在action这里取回压缩包到本地
 
 
+本地编译，根据lede仓库步骤进行
+```
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+make download -j8
+
+make V=s -j1
+```
+
 ## 步骤五：刷入openwrt
 1.在有网的状态下先下载底包，可以是我仓库里的[底包](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/%E5%BA%95%E5%8C%85mt7621redmiac2100.bin)，也可是openwrt官方的
 
@@ -222,7 +228,7 @@ sed -i '/encryption/a\set wireless.default_radio${devidx}.key=123456789' package
 ![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/flash%20image.png)
 ![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/verify.png)
 
-7.转圈圈等待1-2分钟左右关闭网页，重新进入192.168.1.1，此时语言已经为中文，此时的固件就是自己编辑的固件/别人的固件了     疑难解答
+7.转圈圈等待1-2分钟左右关闭网页，重新进入192.168.1.1，此时语言已经为中文，此时的固件就是自己编辑的固件/别人的固件了     
 
 
 ## 步骤六：进行privoxy的代理
@@ -268,15 +274,15 @@ iptables -t nat -A http_ua_drop -p tcp -j REDIRECT --to-port 8118
 4.点击上方网络----接口，查看wan口有没有数据包，有证明已经完成上网的基本配置与drcom的配置。
 
 ## 步骤八：检验成果
-验证防检测效果，电脑打开[ua分析](http://www.all-tool.cn/Tools/ua/)，显示为privoxy3.0.28即为成功
+验证防检测效果，电脑打开[ua分析](http://www.all-tool.cn/Tools/ua/)，显示为privoxy3.0.28即为成功，xmurp-ua不要开启软件分流加速。
 
-## 步骤九：定时重启与wifi的设置    未完成
+## 步骤九：定时重启与wifi的设置    
 1.路由器后台，点击上方系统-----定时重启，选择每天，时间选择5：00即可，**点保存&应用**
 
 2.点击上方网络-----无线
 
 3.当前页面存在两个无线频段，点击基本设置，可以wifi名称，或者是`wifi-2.4`，`wifi-5g`这样设置，**也可以自己设置名字**
 
-4.回到无线页面，高级设置，TX power的值设置为18，两个频段都要这样设置，**否则影响路由器性能以及自动重启。**
+4.回到无线页面，高级设置，TX power的值设置为16，两个频段都要这样设置，**否则影响路由器性能以及自动重启。**
 
 ### 大功告成！开始多设备畅游广工之旅吧
