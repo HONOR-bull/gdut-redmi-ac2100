@@ -158,7 +158,7 @@ sed -i '/encryption/a\set wireless.default_radio${devidx}.key=123456789' package
 
 5.`make menuconfig`，界面会发生改变，可以用***上下键进行移动，回车键进行选择，空格进行勾选，左右键切换select和exit进行选择和离开***，
 
-6.选架构如图所示的**mediatek MIPS**，  CPU型号**MT7921**，点多次下方向键，选LucI----applications----寻找luci-app-privoxy，按两次空格，使左边为 * 号，返回开始的页面下寻找Network，寻找gdut-drcom，按两次空格，使左边为 * 号。到此结束，右方向键选exit回到原始界面
+6.选架构如图所示的**mediatek MIPS**，  CPU型号**MT7921**，点多次下方向键，选LucI----applications----寻找luci-app-privoxy，按两次空格，使左边为 * 号，返回开始的页面下寻找Network，寻找gdut-drcom，按两次空格，使左边为 * 号。到此结束，右方向键选exit回到原始界面（不建议使用privoxy，请选第七小点）
 
 ![pic](https://github.com/HONOR-bull/gdut-redmi-ac2100/blob/main/pic/%E6%9E%B6%E6%9E%84.png)
 
@@ -171,7 +171,7 @@ sed -i '/encryption/a\set wireless.default_radio${devidx}.key=123456789' package
 9.刚刚的config文件本地路径在`\\wsl$\Ubuntu-20.04\home\用户名\lede`中（至少win10 21H1在这里）
 
 ## 步骤四：进行编译
-云编译：来源：[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
+云编译（下拉有本地编译）：来源：[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
 >准备工作
 >注册GitHub 账号
@@ -231,7 +231,7 @@ make V=s -j1
 7.转圈圈等待1-2分钟左右关闭网页，重新进入192.168.1.1，此时语言已经为中文，此时的固件就是自己编辑的固件/别人的固件了     
 
 
-## 步骤六：进行privoxy的代理
+## 步骤六：进行privoxy的代理（xmurp-ua无需任何设置）
 [来源](https://blog.csdn.net/qq_33825817/article/details/87755836)
 #### 来源文章顺序不太合理，请按照本文操作，[来源文章](https://blog.csdn.net/qq_33825817/article/details/87755836)翻到步骤六
 
