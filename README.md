@@ -136,7 +136,7 @@ cd lede
 
 ./scripts/feeds install -a
 
-cd packge
+cd package
 
 git clone https://github.com/GJXS1980/ODP.git
 
